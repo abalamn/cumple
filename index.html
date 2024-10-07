@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Tía!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@300;400&display=swap">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 70px;
+            color: #ff4081;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        p {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+            color: #333;
+            animation: slideIn 2s ease-out;
+        }
+
+        /* Estilos para los globos */
+        .balloon {
+            width: 60px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 70% 70%;
+            position: absolute;
+            animation: float 8s ease-in-out infinite;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .balloon:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 25px;
+            background-color: #333;
+        }
+
+        /* Globos coloridos */
+        .balloon:nth-child(1) { background-color: #ff4081; left: 10%; animation-duration: 6s; }
+        .balloon:nth-child(2) { background-color: #ffd740; left: 30%; animation-duration: 8s; }
+        .balloon:nth-child(3) { background-color: #7c4dff; left: 50%; animation-duration: 7s; }
+        .balloon:nth-child(4) { background-color: #18ffff; left: 70%; animation-duration: 9s; }
+        .balloon:nth-child(5) { background-color: #69f0ae; left: 90%; animation-duration: 6.5s; }
+
+        /* Animaciones */
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-150px) scale(1.05); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.8; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-200px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="greeting">¡Feliz Cumpleaños, Tía!</h1>
+        <p id="custom-message">¡Que la pases súper bien en tu día especial lleno de alegría y amor!</p>
+    </div>
+
+    <!-- Globos coloridos -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const message = urlParams.get('message');
+
+        // Actualizar el nombre y el mensaje si se proporcionan
+        document.getElementById('greeting').innerText = name ? `¡Feliz Cumpleaños, ${name}!` : '¡Feliz Cumpleaños, Tía!';
+        document.getElementById('custom-message').innerText = message ? message : '¡Que la pases súper bien en tu día especial lleno de alegría y amor!';
+    </script>
+
+</body>
+</html>
